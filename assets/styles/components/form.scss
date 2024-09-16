@@ -1,0 +1,18 @@
+.form {
+  width: 100%;
+
+  .form__items {
+    display: flex;
+    margin: -15px -10px;
+  }
+
+  .form__item {
+    flex: 1;
+    padding: 15px 10px;
+
+    &--button {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

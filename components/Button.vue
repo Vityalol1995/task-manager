@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconSvg from "@/components/IconSvg.vue";
+// import IconSvg from "@/components/IconSvg.vue";
 interface Props {
   icon_name?: string;
   icon_show?: boolean;
@@ -17,12 +17,7 @@ const props = defineProps<Props>();
       'button--xs': button_xs,
     }"
   >
-    <IconSvg
-      v-if="props.icon_show && props.icon_name"
-      :name="props.icon_name"
-      width="16"
-      height="16"
-    />
+    <nuxt-icon v-if="props.icon_show && props.icon_name" :name="props.icon_name"/>
     <slot v-if="!only_icon"></slot>
   </button>
 </template>

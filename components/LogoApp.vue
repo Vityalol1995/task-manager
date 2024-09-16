@@ -1,11 +1,11 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  $END$
+  <div class="logo">
+    <span>.</span>
+    <span class="rotate">T</span>
+    <span>o</span>
+    <span>d</span>
+    <span>o</span>
+  </div>
 </template>
-
-<style scoped>
-
-</style>
+<script setup>
+</script>

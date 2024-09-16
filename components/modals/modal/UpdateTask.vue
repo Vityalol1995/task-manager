@@ -1,32 +1,41 @@
 <script setup lang="ts">
 interface Props {
-  status: string
+  id: string,
+  name: string,
+  description?: string,
+  assignee?: string
+  status: string,
+  priority?: string
 }
 
 const props = defineProps<Props>()
-
 const modalStore = useModalStore()
 const tasksStore = useTasksStore()
+const usersStore = useUsersStore()
 
 const name = ref<string>('')
+const openStatus = <string>(props.status)
+
+const assignees = usersStore.users
 
 const task = reactive<Task>({
-  id: '',
-  title: '',
-  description: '',
-  assignee: '',
+  id: props.id,
+  name: props.name,
+  description: props.description ?? '',
+  assignee: props.assignee ?? '',
   status: props.status,
-  priority: 'Low'
+  priority: props.priority ?? 'Low'
 })
 
-const createTask = () => {
-  if (task.title === '') {
+const updateTask = () => {
+  if (task.name === '') {
     return
   }
 
-  task.id = new Date().getTime()
+  usersStore.addNewUsers(task.assignee)
 
-  tasksStore.setNewTask(task)
+
+  tasksStore.updateTask(task, openStatus !== task.status ? openStatus : '')
   modalStore.hide()
 }
 </script>
@@ -38,17 +47,17 @@ const createTask = () => {
         <h5>
           <strong>Add new task</strong>
 
-          <img src="~/assets/icon/close.svg" @click="modalStore.hide()" class="modals__modal-close">
+          <nuxt-icon name="close" @click="modalStore.hide()" class="modals__modal-close"/>
         </h5>
       </div>
 
       <div class="modals__modal-body">
-        <form @submit.prevent="createTask" class="form">
+        <form @submit.prevent="updateTask" class="form">
           <ul class="form__items">
             <li class="form__item">
               <InputText
                   id="create-task"
-                  v-model:value="task.title"
+                  v-model:value="task.name"
                   label="Task title"
                   placeholder="Add title..."
               />
@@ -68,11 +77,12 @@ const createTask = () => {
 
           <ul class="form__items">
             <li class="form__item">
-              <InputText
-                  id="task-assignee"
-                  v-model:value="task.assignee"
-                  label="Assignee"
-                  placeholder="Enter assignee..."
+              <MultiSelect
+                  id="task-assignees"
+                  label="Assignees"
+                  v-model="task.assignee"
+                  :existingUsers="assignees"
+                  placeholder="Select or add assignees"
               />
             </li>
           </ul>
@@ -84,7 +94,7 @@ const createTask = () => {
                   v-model:value="task.status"
                   label="Task Status"
                   :options="[
-                    { label: 'TODO', value: 'TODO' },
+                    { label: 'TO DO', value: 'TODO' },
                     { label: 'In Progress', value: 'IN_PROGRESS' },
                     { label: 'Done', value: 'DONE' }
                   ]"

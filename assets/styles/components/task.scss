@@ -1,0 +1,108 @@
+.task {
+  border: 1px solid #4A4A4A;
+  border-radius: 8px;
+  background-color: $task;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: calc(100vh - 230px);
+  min-width: 320px;
+  flex-grow: 1;
+  padding-bottom: 24px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.task__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 12px 24px;
+}
+
+.task__header-title {
+  font-size: 14px;
+  line-height: 22px;
+  color: $font-gray;
+}
+
+.task__item {
+  padding: 0 24px 0;
+  height: 100%;
+  overflow: hidden auto;
+  min-height: 150px;
+
+  @extend %custom-scroll;
+}
+
+.task__draggable {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.task__body {
+  padding: 24px;
+  border: 1px solid #535353;
+  border-radius: 8px;
+  background-color: $card;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.task__body-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    display: -webkit-box;
+    overflow: hidden;
+    word-break: break-word;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+}
+
+.task__body-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.task__body-icon {
+  .nuxt-icon svg {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.task__body-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task__body-title {
+  font-size: 16px;
+  line-height: 22px;
+  color: $font-gray;
+}
+
+.task__body-text {
+  display: -webkit-box;
+  overflow: hidden;
+  word-break: break-word;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.test {
+  height: calc(100vh - 140px);
+  overflow-y: scroll;
+}

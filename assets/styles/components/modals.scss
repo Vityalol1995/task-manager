@@ -30,13 +30,20 @@
   min-height: 200px;
   max-width: var(--width-modal);
   border-radius: 16px;
-  background-color: $text-white;
+  background-color: $card;
   color: #111111;
 }
 
 .modals__modal-header {
   padding: 24px 50px 24px 24px;
   position: relative;
+  color: $text-white;
+  font-weight: 700;
+
+  .nuxt-icon svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .modals__modal-close {
@@ -47,7 +54,7 @@
 }
 
 .modals__modal-body {
-  padding: 0 24px;
+  padding: 0 24px 24px;;
 }
 
 .modals__modal-footer {

@@ -1,0 +1,126 @@
+.field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  &__label {
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: $text-gray;
+  }
+
+  input[type='text'], select {
+    border-radius: 12px;
+    border: 0.5px solid $border;
+    padding: 10px 24px;
+    background: $field;
+    color: $text-white;
+    flex: 1;
+
+    &:focus {
+      border: 2px solid $main-btn;
+      outline: none;
+    }
+  }
+
+  input::placeholder {
+    color: $text-gray;
+    font-size: 14px;
+  }
+
+  select {
+    appearance: none;
+    background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iOCIgdmlld0JveD0iMCAwIDEyIDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMmw1IDVNNiA3bDUtNSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgLz48L3N2Zz4=") no-repeat right 10px center;
+    background-size: 12px 8px;
+    background: $field;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+  }
+
+  .user-select__input {
+    width: 100%;
+    padding-right: 50px;
+  }
+
+  .field__button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: $main-btn;
+    color: $text-white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: none;
+  }
+
+  .field__container .user-select__input:focus + .field__button,
+  .field__container .field__button {
+    display: block;
+  }
+
+  .field__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: $field;
+    border: 1px solid $border;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    color: $text-white;
+  }
+
+  .field__dropdown li {
+    padding: 8px;
+    cursor: pointer;
+  }
+
+  .field__dropdown li:hover {
+    background-color: $light-gray;
+  }
+
+  .field__selected {
+    margin-top: 10px;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      li {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        white-space: nowrap;
+        background-color: $field;
+        border: 1px solid $border;
+        border-radius: 15px;
+        padding: 5px 10px;
+        color: $text-white;
+      }
+    }
+  }
+
+  .field__remove-button {
+    background: none;
+    border: none;
+    color: #f00;
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 18px;
+  }
+}

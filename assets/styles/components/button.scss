@@ -14,9 +14,11 @@
   cursor: pointer;
   transition: all 0.2s;
 
-  svg {
+  .nuxt-icon svg {
     margin-right: 10px;
     stroke: #fff;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -43,4 +45,10 @@ button[disabled] {
     border: 0.5px solid $light-gray;
     background-color: $gray;
   }
+}
+
+.button--transparent {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
 }
